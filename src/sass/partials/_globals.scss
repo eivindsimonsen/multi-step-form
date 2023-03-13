@@ -2,13 +2,83 @@
   box-sizing: border-box;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   background-color: $LightGray;
   margin: 0px;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .mobile-header {
   & img {
     width: 100%;
+  }
+}
+
+.content-container {
+  background-color: $Magnolia;
+  margin: 0px 15px;
+  padding: 25px;
+  border-radius: 12px;
+  transform: translateY(-75px);
+}
+
+.steps {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  gap: 23px;
+  font-weight: 700;
+  position: absolute;
+  top: -67px;
+  left: 0;
+  right: 0;
+
+  & li {
+    border: 1px solid $Alabaster;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $Alabaster;
+
+    &.active {
+      background-color: $LightBlue;
+      border: 1px solid $LightBlue;
+      color: $MarineBlue;
+    }
+  }
+}
+
+.cta {
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $CoolGray;
+  background-color: $Alabaster;
+  font-family: "Ubuntu", sans-serif;
+
+  &:hover {
+    color: $MarineBlue;
+    cursor: pointer;
+  }
+
+  &-filled {
+    width: 110px;
+    height: 40px;
+    background-color: $MarineBlue;
+    color: $Magnolia;
+    &:hover {
+      background-color: lighten($color: $MarineBlue, $amount: 5);
+      color: $Magnolia;
+    }
   }
 }

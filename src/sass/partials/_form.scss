@@ -1,0 +1,48 @@
+.form-buttons-mobile {
+  padding: 20px 15px;
+  background-color: $Alabaster;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titles {
+  margin-bottom: 30px;
+
+  & h1 {
+    font-size: 1.6rem;
+  }
+
+  & h2 {
+    font-size: 1.1rem;
+    color: $CoolGray;
+    font-weight: 400;
+  }
+}
+
+.forms {
+  & > * {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+
+    & > input {
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid $CoolGray;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 700;
+      color: $MarineBlue;
+
+      &::placeholder {
+        color: $CoolGray;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $MarineBlue;
+      }
+    }
+  }
+}

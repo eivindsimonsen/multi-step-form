@@ -1,7 +1,14 @@
-import React from "react";
+import StepOne from "./StepOne";
 
-function FormContainer() {
-  return <form>FormContainer</form>;
+function FormContainer(props) {
+  return (
+    <>
+      <StepOne
+        title={props.title}
+        subTitle={props.subTitle}
+      />
+    </>
+  );
 }
 
 export default FormContainer;

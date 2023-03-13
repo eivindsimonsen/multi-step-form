@@ -1,16 +1,27 @@
 import "./sass/style.scss";
-import image from "./assets/images/bg-sidebar-mobile.png";
+import imageMobile from "./assets/images/bg-sidebar-mobile.svg";
+import FormContainer from "./components/FormContainer";
 
 function App() {
   return (
-    <main className="App">
+    <>
       <header className="mobile-header">
         <img
-          src={image}
-          alt=""
+          src={imageMobile}
+          alt="Colorful background image"
         />
       </header>
-    </main>
+      <main className="content-container">
+        <FormContainer
+          title="Personal info"
+          subTitle="Please provide your name, email, address, and phone number."
+        />
+      </main>
+      <footer className="form-buttons-mobile">
+        <button className="cta">Go back</button>
+        <button className="cta cta-filled">Next step</button>
+      </footer>
+    </>
   );
 }
 
