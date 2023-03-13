@@ -81,4 +81,8 @@ body {
       color: $Magnolia;
     }
   }
+
+  &-hidden {
+    visibility: hidden;
+  }
 }
