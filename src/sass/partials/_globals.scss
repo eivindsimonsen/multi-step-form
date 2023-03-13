@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $LightGray;
+  margin: 0px;
+}
+
+.mobile-header {
+  & img {
+    width: 100%;
+  }
+}
