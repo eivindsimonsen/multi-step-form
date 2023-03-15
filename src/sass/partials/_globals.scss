@@ -2,21 +2,31 @@
   box-sizing: border-box;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 body {
   background-color: $LightGray;
   margin: 0px;
   font-family: "Ubuntu", sans-serif;
 }
 
+.content-wrapper {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 942px) {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+  }
+}
+
 .mobile-header {
   & img {
     width: 100%;
+  }
+
+  @media (min-width: 942px) {
+    display: none;
   }
 }
 

@@ -4,6 +4,10 @@
   margin-top: auto;
   display: flex;
   justify-content: space-between;
+
+  @media (min-width: 942px) {
+    display: none;
+  }
 }
 
 .titles {

@@ -32,43 +32,45 @@ function FormContainer() {
           alt="Colorful background image"
         />
       </header>
-      <main className="content-container">
-        <div className="steps">
-          {actives.map((active, index) => (
-            <li
-              className={index === currentStepIndex ? "active" : ""}
-              key={index}>
-              {active}
-            </li>
-          ))}
-        </div>
-        {showCompleted && <Completed />}
+      <div className="content-wrapper">
+        <main className="content-container">
+          <div className="steps">
+            {actives.map((active, index) => (
+              <li
+                className={index === currentStepIndex ? "active" : ""}
+                key={index}>
+                {active}
+              </li>
+            ))}
+          </div>
+          {showCompleted && <Completed />}
+          {!showCompleted && (
+            <form
+              onSubmit={onSubmit}
+              className="forms"
+              id="form">
+              {step}
+            </form>
+          )}
+        </main>
         {!showCompleted && (
-          <form
-            onSubmit={onSubmit}
-            className="forms"
-            id="form">
-            {step}
-          </form>
+          <footer className="form-buttons-mobile">
+            <button
+              type="button"
+              onClick={back}
+              className={"cta " + (isFirstStep ? "cta-hidden" : "")}>
+              Go back
+            </button>
+            <button
+              form="form"
+              type="submit"
+              onClick={handleShowCompleted}
+              className="cta cta-filled">
+              {isLastStep ? "Confirm" : "Next step"}
+            </button>
+          </footer>
         )}
-      </main>
-      {!showCompleted && (
-        <footer className="form-buttons-mobile">
-          <button
-            type="button"
-            onClick={back}
-            className={"cta " + (isFirstStep ? "cta-hidden" : "")}>
-            Go back
-          </button>
-          <button
-            form="form"
-            type="submit"
-            onClick={handleShowCompleted}
-            className="cta cta-filled">
-            {isLastStep ? "Confirm" : "Next step"}
-          </button>
-        </footer>
-      )}
+      </div>
     </>
   );
 }
