@@ -6,6 +6,7 @@ import StepFour from "./StepFour";
 import Completed from "./Completed";
 import { useMultistepForm } from "./hooks/useMultistepForm";
 import imageMobile from "../assets/images/bg-sidebar-mobile.svg";
+import imageDesktop from "../assets/images/bg-sidebar-desktop.svg";
 
 function FormContainer() {
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } = useMultistepForm([<StepOne />, <StepTwo />, <StepThree />, <StepFour />]);
@@ -34,27 +35,57 @@ function FormContainer() {
       </header>
       <div className="content-wrapper">
         <main className="content-container">
-          <div className="steps">
-            {actives.map((active, index) => (
-              <li
-                className={index === currentStepIndex ? "active" : ""}
-                key={index}>
-                {active}
-              </li>
-            ))}
+          <div className="steps-container">
+            <img
+              src={imageDesktop}
+              alt="Colorful background image"
+            />
+            <div className="steps">
+              {actives.map((active, index) => (
+                <div
+                  key={index}
+                  className="steps-list">
+                  <li className={index === currentStepIndex ? "active" : ""}>{active}</li>
+                  <div className="steps-list-text">
+                    <p>STEP {active}</p>
+                    {index === 0 && <h3>Your Info</h3>}
+                    {index === 1 && <h3>Select plan</h3>}
+                    {index === 2 && <h3>Add-ons</h3>}
+                    {index === 3 && <h3>Summary</h3>}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           {showCompleted && <Completed />}
           {!showCompleted && (
-            <form
-              onSubmit={onSubmit}
-              className="forms"
-              id="form">
-              {step}
-            </form>
+            <>
+              <form
+                onSubmit={onSubmit}
+                className="forms"
+                id="form">
+                {step}
+                <footer className="form-buttons form-buttons-desktop">
+                  <button
+                    type="button"
+                    onClick={back}
+                    className={"cta " + (isFirstStep ? "cta-hidden" : "")}>
+                    Go back
+                  </button>
+                  <button
+                    form="form"
+                    type="submit"
+                    onClick={handleShowCompleted}
+                    className="cta cta-filled">
+                    {isLastStep ? "Confirm" : "Next step"}
+                  </button>
+                </footer>
+              </form>
+            </>
           )}
         </main>
         {!showCompleted && (
-          <footer className="form-buttons-mobile">
+          <footer className="form-buttons form-buttons-mobile">
             <button
               type="button"
               onClick={back}
