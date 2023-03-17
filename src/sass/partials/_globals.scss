@@ -5,7 +5,8 @@
 body {
   background-color: $LightGray;
   margin: 0px;
-  font-family: "Ubuntu", sans-serif;
+  // font-family: "Ubuntu", sans-serif; Ubuntu font looks funny??
+  font-family: sans-serif;
 }
 
 .content-wrapper {
@@ -36,6 +37,14 @@ body {
   padding: 25px;
   border-radius: 12px;
   transform: translateY(-75px);
+
+  @media (min-width: 942px) {
+    display: flex;
+    transform: translateY(0px);
+    padding: 15px;
+    width: 100%;
+    max-width: 1020px;
+  }
 }
 
 .steps {
@@ -48,6 +57,13 @@ body {
   top: -67px;
   left: 0;
   right: 0;
+
+  @media (min-width: 942px) {
+    flex-direction: column;
+    font-size: 1.1rem;
+    top: 30px;
+    left: 30px;
+  }
 
   & li {
     border: 1px solid $Alabaster;
@@ -64,6 +80,53 @@ body {
       border: 1px solid $LightBlue;
       color: $MarineBlue;
     }
+
+    @media (min-width: 942px) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &-container {
+    & img {
+      display: none;
+    }
+    @media (min-width: 942px) {
+      position: relative;
+      & img {
+        display: block;
+      }
+    }
+  }
+
+  &-list {
+    display: flex;
+    align-items: center;
+
+    &-text {
+      display: none;
+      & > * {
+        margin: 5px 0px 0px 20px;
+        color: $Magnolia;
+        letter-spacing: 1px;
+      }
+
+      & p {
+        font-weight: 100;
+        font-size: 0.8rem;
+        color: $LightGray;
+      }
+
+      & h3 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      @media (min-width: 942px) {
+        display: block;
+      }
+    }
   }
 }
 
@@ -71,10 +134,14 @@ body {
   border: none;
   border-radius: 5px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   color: $CoolGray;
-  background-color: $Alabaster;
-  font-family: "Ubuntu", sans-serif;
+  background-color: inherit;
+  font-family: sans-serif;
+
+  @media (max-width: 942px) {
+    background-color: $Alabaster;
+  }
 
   &:hover {
     color: $MarineBlue;
@@ -83,7 +150,7 @@ body {
 
   &-filled {
     width: 110px;
-    height: 40px;
+    height: 45px;
     background-color: $MarineBlue;
     color: $Magnolia;
     &:hover {
