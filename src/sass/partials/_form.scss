@@ -235,13 +235,46 @@ input:checked + .switch:active::before {
 
 // Step four
 .summary {
-  & > div > div > .summary-option-title {
+  & > * {
+    padding: 10px 30px;
+  }
+
+  & > div > div > div > .summary-option-title {
     color: $MarineBlue;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin: 10px 0px;
+  }
+
+  &-bg {
+    background-color: $Magnolia;
+    border-radius: 15px;
+
+    & > * {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & h4 {
+        margin: 15px 0px;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+    }
+
+    & hr {
+      margin: 20px 0px;
+      border: 1px solid $LightGray;
+      border-radius: 50px;
+    }
   }
 
   & h4 {
     color: $CoolGray;
+  }
+
+  &-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -267,10 +300,17 @@ input:checked + .switch:active::before {
 
 #span-underline {
   text-decoration: underline;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
 }
 
 #purple-span {
   color: $PurplishBlue;
+
+  &-total {
+    color: $PurplishBlue;
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
 }
 
 #blue-span {

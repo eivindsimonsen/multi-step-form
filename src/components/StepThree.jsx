@@ -11,8 +11,6 @@ function StepThree() {
     });
   };
 
-  console.log(checked);
-
   return (
     <>
       <div className="titles">

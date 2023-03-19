@@ -1,0 +1,22 @@
+.completed {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.5;
+
+  @media (min-width: 639px) {
+    margin: 0px 100px;
+  }
+
+  & h1 {
+    font-size: clamp(1.8rem, 2.5vw, 2rem);
+    white-space: nowrap;
+    margin-bottom: 0px;
+  }
+
+  & p {
+    margin-top: 10px;
+  }
+}

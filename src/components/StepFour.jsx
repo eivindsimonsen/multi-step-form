@@ -10,10 +10,13 @@ function StepFour() {
       <div className="summary">
         <div className="summary-bg">
           <div>
-            <h4 className="summary-option-title">Arcade (Yearly)</h4>
-            <span id="span-underline">Change</span>
+            <div>
+              <h4 className="summary-option-title">Arcade (Yearly)</h4>
+              <span id="span-underline">Change</span>
+            </div>
             <span id="blue-span-summary">$90/yr</span>
           </div>
+          <hr />
           <div>
             <h4>Online service</h4>
             <span id="blue-span">+$10/yr</span>
@@ -23,7 +26,10 @@ function StepFour() {
             <span id="blue-span">+$20/yr</span>
           </div>
         </div>
-        <div className="summary-total"></div>
+        <div className="summary-total">
+          <h4>Total (per year)</h4>
+          <span id="purple-span-total">$120/yr</span>
+        </div>
       </div>
     </>
   );
