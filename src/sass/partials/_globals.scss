@@ -9,6 +9,13 @@ body {
   font-family: sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  color: $MarineBlue;
+}
+
 .content-wrapper {
   min-height: 80vh;
   display: flex;

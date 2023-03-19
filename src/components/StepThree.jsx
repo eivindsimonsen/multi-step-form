@@ -4,32 +4,49 @@ function StepThree() {
   return (
     <>
       <div className="titles">
-        <h1>Personal info</h1>
-        <h2>Please provide your name, email, address, and phone number.</h2>
+        <h1>Pick add-ons</h1>
+        <h2>Add-ons help enhance your gaming experience.</h2>
       </div>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="e.g. Stephen King"
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email Address</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="e.g. stephenking@lorem.com"
-        />
-      </div>
-      <div>
-        <label htmlFor="phone">Phone Number</label>
-        <input
-          type="number"
-          id="phone"
-          placeholder="e.g. +1 234 567 890"
-        />
+      <div className="add-ons">
+        <div className="add-ons-container">
+          <div>
+            <input
+              type="checkbox"
+              id="add-on"
+            />
+            <div>
+              <h4>Online Service</h4>
+              <span>Access to multiplayer games</span>
+            </div>
+          </div>
+          <span id="purple-span">+$1/mo</span>
+        </div>
+        <div className="add-ons-container">
+          <div>
+            <input
+              type="checkbox"
+              id="add-on"
+            />
+            <div>
+              <h4>Larger storage</h4>
+              <span>Extra 1TB of cloud save</span>
+            </div>
+          </div>
+          <span id="purple-span">+$2/mo</span>
+        </div>
+        <div className="add-ons-container">
+          <div>
+            <input
+              type="checkbox"
+              id="add-on"
+            />
+            <div>
+              <h4>Customizable profile</h4>
+              <span>Custom theme on your profile</span>
+            </div>
+          </div>
+          <span id="purple-span">+$2/mo</span>
+        </div>
       </div>
     </>
   );

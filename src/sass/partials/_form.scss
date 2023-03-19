@@ -27,7 +27,6 @@
   & h1 {
     font-size: 1.6rem;
     margin: 10px 0px 0px 0px;
-    color: $MarineBlue;
 
     @media (min-width: 942px) {
       font-size: 1.9rem;
@@ -62,6 +61,10 @@ span {
   flex-direction: column;
   gap: 5px;
   margin-bottom: 20px;
+
+  & > label {
+    color: $MarineBlue;
+  }
 
   & > input {
     padding: 12px;
@@ -123,7 +126,6 @@ span {
 
     & h4 {
       margin: 10px 0px;
-      color: $MarineBlue;
 
       @media (max-width: 639px) {
         margin-bottom: 10px;
@@ -156,15 +158,6 @@ span {
     border: 2px solid $PurplishBlue;
     background-color: $Magnolia;
   }
-}
-
-#year-plan {
-  color: $MarineBlue;
-  margin-top: 5px;
-}
-
-#selected-payment-method {
-  color: $MarineBlue;
 }
 
 .switch {
@@ -201,4 +194,57 @@ input:checked + .switch::before {
 }
 input:checked + .switch:active::before {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
+}
+
+// add-ons step
+.add-ons {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $CoolGray;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 15px 0px;
+    align-items: center;
+    font-size: clamp(12px, 2.5vw, 16px);
+
+    &:hover {
+      background-color: $Magnolia;
+      cursor: pointer;
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+
+      & h4,
+      span {
+        margin: 0px 0px 10px 20px;
+      }
+    }
+  }
+}
+
+// Overrides
+#year-plan {
+  color: $MarineBlue;
+  margin-top: 5px;
+}
+
+#selected-payment-method {
+  color: $MarineBlue;
+}
+
+#add-on {
+  width: 15px;
+  height: 15px;
+
+  @media (min-width: 743px) {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+#purple-span {
+  color: $PurplishBlue;
 }
