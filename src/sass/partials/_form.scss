@@ -196,7 +196,7 @@ input:checked + .switch:active::before {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
 }
 
-// add-ons step
+// Step three
 .add-ons {
   &-container {
     display: flex;
@@ -233,6 +233,18 @@ input:checked + .switch:active::before {
   }
 }
 
+// Step four
+.summary {
+  & > div > div > .summary-option-title {
+    color: $MarineBlue;
+    font-size: 1.2rem;
+  }
+
+  & h4 {
+    color: $CoolGray;
+  }
+}
+
 // Overrides
 #year-plan {
   color: $MarineBlue;
@@ -253,6 +265,19 @@ input:checked + .switch:active::before {
   }
 }
 
+#span-underline {
+  text-decoration: underline;
+}
+
 #purple-span {
   color: $PurplishBlue;
+}
+
+#blue-span {
+  color: $MarineBlue;
+
+  &-summary {
+    font-weight: 800;
+    color: $MarineBlue;
+  }
 }

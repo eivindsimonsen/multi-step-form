@@ -4,32 +4,26 @@ function StepFour() {
   return (
     <>
       <div className="titles">
-        <h1>Personal info</h1>
-        <h2>Please provide your name, email, address, and phone number.</h2>
+        <h1>Finishing up</h1>
+        <h2>Double-check everything looks OK before confirming.</h2>
       </div>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="e.g. Stephen King"
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email Address</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="e.g. stephenking@lorem.com"
-        />
-      </div>
-      <div>
-        <label htmlFor="phone">Phone Number</label>
-        <input
-          type="number"
-          id="phone"
-          placeholder="e.g. +1 234 567 890"
-        />
+      <div className="summary">
+        <div className="summary-bg">
+          <div>
+            <h4 className="summary-option-title">Arcade (Yearly)</h4>
+            <span id="span-underline">Change</span>
+            <span id="blue-span-summary">$90/yr</span>
+          </div>
+          <div>
+            <h4>Online service</h4>
+            <span id="blue-span">+$10/yr</span>
+          </div>
+          <div>
+            <h4>Larger storage</h4>
+            <span id="blue-span">+$20/yr</span>
+          </div>
+        </div>
+        <div className="summary-total"></div>
       </div>
     </>
   );

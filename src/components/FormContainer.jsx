@@ -76,7 +76,7 @@ function FormContainer() {
                     form="form"
                     type="submit"
                     onClick={handleShowCompleted}
-                    className="cta cta-filled">
+                    className={"cta " + (isLastStep ? "cta-last-step" : "cta-filled")}>
                     {isLastStep ? "Confirm" : "Next step"}
                   </button>
                 </footer>
@@ -96,7 +96,7 @@ function FormContainer() {
               form="form"
               type="submit"
               onClick={handleShowCompleted}
-              className="cta cta-filled">
+              className={"cta " + (isLastStep ? "cta-last-step" : "cta-filled")}>
               {isLastStep ? "Confirm" : "Next step"}
             </button>
           </footer>

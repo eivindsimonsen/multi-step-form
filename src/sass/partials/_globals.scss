@@ -166,6 +166,13 @@ h4 {
     }
   }
 
+  &-last-step {
+    width: 110px;
+    height: 45px;
+    background-color: $PurplishBlue;
+    color: $Magnolia !important;
+  }
+
   &-hidden {
     visibility: hidden;
   }
