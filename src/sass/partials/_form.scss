@@ -208,6 +208,10 @@ input:checked + .switch:active::before {
     align-items: center;
     font-size: clamp(12px, 2.5vw, 16px);
 
+    & > input:checked {
+      border: 1px solid red;
+    }
+
     &:hover {
       background-color: $Magnolia;
       cursor: pointer;
@@ -222,6 +226,10 @@ input:checked + .switch:active::before {
         margin: 0px 0px 10px 20px;
       }
     }
+  }
+
+  &-checked {
+    border: 1px solid $PurplishBlue;
   }
 }
 
