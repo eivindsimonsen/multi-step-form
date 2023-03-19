@@ -5,7 +5,7 @@ function StepOne() {
         <h1>Personal info</h1>
         <h2>Please provide your name, email, address, and phone number.</h2>
       </div>
-      <div>
+      <div className="form-inputs">
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -13,7 +13,7 @@ function StepOne() {
           placeholder="e.g. Stephen King"
         />
       </div>
-      <div>
+      <div className="form-inputs">
         <label htmlFor="email">Email Address</label>
         <input
           type="email"
@@ -21,7 +21,7 @@ function StepOne() {
           placeholder="e.g. stephenking@lorem.com"
         />
       </div>
-      <div>
+      <div className="form-inputs">
         <label htmlFor="phone">Phone Number</label>
         <input
           type="number"

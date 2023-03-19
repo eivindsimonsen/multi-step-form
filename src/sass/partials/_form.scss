@@ -42,6 +42,10 @@
   }
 }
 
+span {
+  color: $CoolGray;
+}
+
 .forms {
   display: flex;
   flex-direction: column;
@@ -50,39 +54,151 @@
     margin: 20px auto;
     width: 55%;
   }
+}
 
-  & > div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-bottom: 20px;
+// Step one
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
 
-    & > input {
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid $CoolGray;
-      font-family: "Ubuntu", sans-serif;
-      font-weight: 700;
-      color: $MarineBlue;
+  & > input {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid $CoolGray;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    color: $MarineBlue;
 
-      &::placeholder {
-        color: $CoolGray;
-        font-family: sans-serif;
-
-        @media (min-width: 942px) {
-          font-size: 0.9rem;
-        }
-      }
-
-      &:focus {
-        outline: none;
-        border-color: $MarineBlue;
-      }
+    &::placeholder {
+      color: $CoolGray;
+      font-family: sans-serif;
 
       @media (min-width: 942px) {
-        padding: 16px;
-        margin-bottom: 10px;
+        font-size: 0.9rem;
       }
     }
+
+    &:focus {
+      outline: none;
+      border-color: $MarineBlue;
+    }
+
+    @media (min-width: 942px) {
+      padding: 16px;
+      margin-bottom: 10px;
+    }
   }
+}
+
+// Step two
+.option {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+
+  @media (min-width: 639px) {
+    height: 200px;
+    flex-direction: row;
+  }
+
+  & > * {
+    flex-basis: 100%;
+    border: 1px solid $CoolGray;
+    border-radius: 5px;
+    padding: 20px 15px;
+    display: grid;
+    place-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $Magnolia;
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+    }
+
+    & h4 {
+      margin: 10px 0px;
+      color: $MarineBlue;
+
+      @media (max-width: 639px) {
+        margin-bottom: 10px;
+        margin-top: 0px;
+        font-size: 1.2rem;
+      }
+    }
+
+    & p {
+      margin: 0px;
+    }
+  }
+
+  &-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: $Magnolia;
+    border-radius: 5px;
+    margin-top: 50px;
+
+    & p {
+      font-weight: 600;
+      color: $CoolGray;
+    }
+  }
+
+  &-active {
+    border: 2px solid $PurplishBlue;
+    background-color: $Magnolia;
+  }
+}
+
+#year-plan {
+  color: $MarineBlue;
+  margin-top: 5px;
+}
+
+#selected-payment-method {
+  color: $MarineBlue;
+}
+
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 25px;
+  border-radius: 20px;
+  background: $MarineBlue;
+  transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  vertical-align: middle;
+  cursor: pointer;
+}
+.switch::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  width: 17px;
+  height: 17px;
+  background: $Alabaster;
+  border-radius: 50%;
+  transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.switch:active::before {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(128, 128, 128, 0.1);
+}
+input:checked + .switch {
+  background: $MarineBlue;
+}
+input:checked + .switch::before {
+  left: 27px;
+  background: #fff;
+}
+input:checked + .switch:active::before {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
 }
