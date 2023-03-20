@@ -8,10 +8,58 @@ import { useMultistepForm } from "./hooks/useMultistepForm";
 import imageMobile from "../assets/images/bg-sidebar-mobile.svg";
 import imageDesktop from "../assets/images/bg-sidebar-desktop.svg";
 
+const INITIAL_DATA = {
+  name: "",
+  email: "",
+  phone: "",
+  plan: "",
+  pricePlan: "",
+  addOns: {
+    online: "",
+    storage: "",
+    profile: "",
+  },
+};
+
 function FormContainer() {
-  const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } = useMultistepForm([<StepOne />, <StepTwo />, <StepThree />, <StepFour />]);
+  const [toggler, setToggler] = useState(false);
   const [actives] = useState(["1", "2", "3", "4"]);
   const [showCompleted, setShowCompleted] = useState(false);
+  const [data, setData] = useState(INITIAL_DATA);
+
+  function updateFields(fields) {
+    setData((prev) => {
+      return { ...prev, ...fields };
+    });
+  }
+  console.log(data.plan);
+
+  const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } = useMultistepForm([
+    <StepOne
+      {...data}
+      updateFields={updateFields}
+    />,
+    <StepTwo
+      toggler={toggler}
+      setToggler={setToggler}
+      onTogglerChange={handleTogglerChange}
+      {...data}
+      updateFields={updateFields}
+    />,
+    <StepThree
+      toggler={toggler}
+      {...data}
+      updateFields={updateFields}
+    />,
+    <StepFour
+      {...data}
+      updateFields={updateFields}
+    />,
+  ]);
+
+  function handleTogglerChange(newValue) {
+    setToggler(newValue);
+  }
 
   function onSubmit(e) {
     e.preventDefault();

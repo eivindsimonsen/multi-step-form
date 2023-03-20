@@ -1,4 +1,4 @@
-function StepOne() {
+function StepOne({ name, email, phone, updateFields }) {
   return (
     <>
       <div className="titles">
@@ -11,6 +11,8 @@ function StepOne() {
           type="text"
           id="name"
           placeholder="e.g. Stephen King"
+          value={name}
+          onChange={(e) => updateFields({ name: e.target.value })}
         />
       </div>
       <div className="form-inputs">
@@ -19,6 +21,8 @@ function StepOne() {
           type="email"
           id="email"
           placeholder="e.g. stephenking@lorem.com"
+          value={email}
+          onChange={(e) => updateFields({ email: e.target.value })}
         />
       </div>
       <div className="form-inputs">
@@ -27,6 +31,8 @@ function StepOne() {
           type="number"
           id="phone"
           placeholder="e.g. +1 234 567 890"
+          value={phone}
+          onChange={(e) => updateFields({ phone: e.target.value })}
         />
       </div>
     </>

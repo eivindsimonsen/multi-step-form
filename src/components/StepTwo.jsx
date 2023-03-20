@@ -1,16 +1,21 @@
 import { useState } from "react";
 
-function StepTwo() {
+function StepTwo(props) {
   const [option, setOption] = useState([false, false, false]);
-  const [toggler, setToggler] = useState(false);
+  // const [toggler, setToggler] = useState(false);
+  const { onTogglerChange, toggler, setToggler, updateFields, plan, pricePlan } = props;
 
   const toggleOption = (index) => {
     const newOptions = option.map((value, i) => i === index);
     setOption(newOptions);
+    // updateFields({ plan: option[index] });
   };
+
+  // console.log(option);
 
   const togglePayment = () => {
     setToggler(!toggler);
+    onTogglerChange(!toggler);
   };
 
   return (
@@ -111,7 +116,8 @@ function StepTwo() {
           type="checkbox"
           hidden="hidden"
           id="username"
-          onClick={togglePayment}
+          onChange={togglePayment}
+          checked={toggler ? "checked" : ""}
         />
         <label
           className="switch"

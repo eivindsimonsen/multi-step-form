@@ -1,6 +1,8 @@
 import React from "react";
 
-function StepFour() {
+function StepFour(props) {
+  const { data } = props;
+
   return (
     <>
       <div className="titles">

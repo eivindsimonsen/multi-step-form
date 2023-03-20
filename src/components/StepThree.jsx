@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-function StepThree() {
+function StepThree(props) {
   const [checked, setChecked] = useState({});
+  const { toggler, data } = props;
 
   const toggleChecked = (id) => {
     setChecked((prevChecked) => {
@@ -33,7 +34,7 @@ function StepThree() {
               <span>Access to multiplayer games</span>
             </div>
           </div>
-          <span id="purple-span">+$1/mo</span>
+          <span id="purple-span">{toggler ? "+$10/yr" : "+$1/mo"}</span>
         </div>
         <div
           onClick={() => toggleChecked("larger-storage")}
@@ -50,7 +51,7 @@ function StepThree() {
               <span>Extra 1TB of cloud save</span>
             </div>
           </div>
-          <span id="purple-span">+$2/mo</span>
+          <span id="purple-span">{toggler ? "+$20/yr" : "+$2/mo"}</span>
         </div>
         <div
           onClick={() => toggleChecked("customizable-profile")}
@@ -67,7 +68,7 @@ function StepThree() {
               <span>Custom theme on your profile</span>
             </div>
           </div>
-          <span id="purple-span">+$2/mo</span>
+          <span id="purple-span">{toggler ? "+$20/yr" : "+$2/mo"}</span>
         </div>
       </div>
     </>
