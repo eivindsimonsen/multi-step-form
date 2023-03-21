@@ -1,6 +1,6 @@
 function StepTwo(props) {
   // const [toggler, setToggler] = useState(false);
-  const { onTogglerChange, toggler, setToggler, updateFields, toggleOption, option, setOption } = props;
+  const { onTogglerChange, toggler, setToggler, updateFields, toggleOption, option, setOption, planError } = props;
 
   const togglePayment = () => {
     setToggler(!toggler);
@@ -109,6 +109,7 @@ function StepTwo(props) {
           </div>
         </div>
       </div>
+
       <div className="option-switch">
         <p id={toggler ? "" : "selected-payment-method"}>Monthly</p>
         <input
@@ -123,6 +124,7 @@ function StepTwo(props) {
           htmlFor="username"></label>
         <p id={toggler ? "selected-payment-method" : ""}>Yearly</p>
       </div>
+      {planError && <div className="plan-error">Select a plan</div>}
     </>
   );
 }

@@ -9,7 +9,7 @@ import imageMobile from "../assets/images/bg-sidebar-mobile.svg";
 import imageDesktop from "../assets/images/bg-sidebar-desktop.svg";
 
 const INITIAL_DATA = {
-  name: "",
+  fullName: "",
   email: "",
   phone: "",
   plan: "",
@@ -24,6 +24,11 @@ function FormContainer() {
   const [actives] = useState(["1", "2", "3", "4"]);
   const [showCompleted, setShowCompleted] = useState(false);
   const [data, setData] = useState(INITIAL_DATA);
+  // Form validation
+  const [fullNameError, setFullNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [planError, setPlanError] = useState(false);
 
   // Saves picked plan to state in step two component
   const [option, setOption] = useState([false, false, false]);
@@ -57,6 +62,9 @@ function FormContainer() {
     <StepOne
       {...data}
       updateFields={updateFields}
+      fullNameError={fullNameError}
+      emailError={emailError}
+      phoneError={phoneError}
     />,
     <StepTwo
       {...data}
@@ -67,6 +75,7 @@ function FormContainer() {
       toggleOption={toggleOption}
       option={option}
       setOption={setOption}
+      planError={planError}
     />,
     <StepThree
       toggler={toggler}
@@ -90,9 +99,49 @@ function FormContainer() {
 
   function onSubmit(e) {
     e.preventDefault();
+
+    // Step one validation
+    if (currentStepIndex === 0) {
+      if (fullName.value.length < 1) {
+        setFullNameError(true);
+      } else {
+        setFullNameError(false);
+      }
+      if (email.value.length < 1) {
+        setEmailError(true);
+      } else {
+        setEmailError(false);
+      }
+      if (phone.value.length < 1) {
+        setPhoneError(true);
+      } else {
+        setPhoneError(false);
+      }
+      if (fullName.value.length < 1 || email.value.length < 1 || phone.value.length < 1) {
+        return;
+      }
+    }
+
+    if (currentStepIndex === 1) {
+      if (option[0] === false && option[1] === false && option[2] === false) {
+        setPlanError(true);
+        return;
+      }
+    }
+
+    if (currentStepIndex === 1) {
+      if (option[0] === true || option[1] === true || option[2] === true) {
+        setPlanError(false);
+      }
+    }
+
+    // If validation is OK, go to next step
     if (!isLastStep) return next();
-    console.log("YOUR FORM HAS BEEN SENT!");
+
+    // Show completed screen on form submission at last step
     setShowCompleted(true);
+
+    // Send all details to firebase database
   }
 
   return (

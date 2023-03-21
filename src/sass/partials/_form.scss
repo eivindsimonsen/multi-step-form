@@ -77,6 +77,10 @@ span {
     font-weight: 700;
     color: $MarineBlue;
 
+    &.form-error {
+      border: 1px solid $StrawberryRed;
+    }
+
     &::placeholder {
       color: $CoolGray;
       font-family: sans-serif;
@@ -95,6 +99,17 @@ span {
       padding: 16px;
       margin-bottom: 10px;
     }
+  }
+
+  & div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & span {
+    color: $StrawberryRed;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
   }
 }
 
@@ -197,6 +212,16 @@ input:checked + .switch::before {
 }
 input:checked + .switch:active::before {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
+}
+
+.plan-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: $StrawberryRed;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 // Step three
