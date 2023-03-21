@@ -7,6 +7,8 @@ import Completed from "./Completed";
 import { useMultistepForm } from "./hooks/useMultistepForm";
 import imageMobile from "../assets/images/bg-sidebar-mobile.svg";
 import imageDesktop from "../assets/images/bg-sidebar-desktop.svg";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const INITIAL_DATA = {
   fullName: "",
@@ -97,7 +99,7 @@ function FormContainer() {
     setToggler(newValue);
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
 
     // Step one validation
@@ -143,6 +145,17 @@ function FormContainer() {
     setShowCompleted(true);
 
     // Send all details to firebase database
+    await addDoc(collection(db, "sign-ups"), {
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      plan: data.plan,
+      pricePlan: `$${data.pricePlan}`,
+      online: [data.online[0], `$${data.online[1]}`],
+      storage: [data.storage[0], `$${data.storage[1]}`],
+      profile: [data.profile[0], `$${data.profile[1]}`],
+      total: `$${data.pricePlan + data.online[1] + data.storage[1] + data.profile[1]} ${toggler ? "Yearly" : "Monthly"}`,
+    });
   }
 
   return (

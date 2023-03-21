@@ -22,7 +22,7 @@ function StepOne({ fullName, email, phone, updateFields, fullNameError, emailErr
       </div>
       <div className="form-inputs">
         <div>
-          <label htmlFor="name">Email Address</label>
+          <label htmlFor="email">Email Address</label>
           {emailError && <span>This field is required</span>}
         </div>
         <input
@@ -36,7 +36,7 @@ function StepOne({ fullName, email, phone, updateFields, fullNameError, emailErr
       </div>
       <div className="form-inputs">
         <div>
-          <label htmlFor="name">Phone Number</label>
+          <label htmlFor="phone">Phone Number</label>
           {phoneError && <span>This field is required</span>}
         </div>
         <input
