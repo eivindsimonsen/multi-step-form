@@ -21,14 +21,13 @@ p {
 }
 
 .content-wrapper {
-  // min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 
   @media (min-width: 942px) {
     display: grid;
     place-items: center;
-    min-height: 100vh;
   }
 }
 
