@@ -90,14 +90,9 @@ function FormContainer() {
 
   function onSubmit(e) {
     e.preventDefault();
-    return next();
-  }
-
-  function handleShowCompleted() {
-    if (isLastStep) {
-      alert("Is all info correct?");
-      setShowCompleted(true);
-    }
+    if (!isLastStep) return next();
+    console.log("YOUR FORM HAS BEEN SENT!");
+    setShowCompleted(true);
   }
 
   return (
@@ -150,7 +145,6 @@ function FormContainer() {
                   <button
                     form="form"
                     type="submit"
-                    onClick={handleShowCompleted}
                     className={"cta " + (isLastStep ? "cta-last-step" : "cta-filled")}>
                     {isLastStep ? "Confirm" : "Next step"}
                   </button>
@@ -170,7 +164,6 @@ function FormContainer() {
             <button
               form="form"
               type="submit"
-              onClick={handleShowCompleted}
               className={"cta " + (isLastStep ? "cta-last-step" : "cta-filled")}>
               {isLastStep ? "Confirm" : "Next step"}
             </button>
