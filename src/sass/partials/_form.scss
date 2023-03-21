@@ -301,6 +301,11 @@ input:checked + .switch:active::before {
 #span-underline {
   text-decoration: underline;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
+
+  &:hover {
+    cursor: pointer;
+    color: $PurplishBlue;
+  }
 }
 
 #purple-span {
@@ -315,6 +320,7 @@ input:checked + .switch:active::before {
 
 #blue-span {
   color: $MarineBlue;
+  font-weight: 600;
 
   &-summary {
     font-weight: 800;

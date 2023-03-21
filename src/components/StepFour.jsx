@@ -1,7 +1,30 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 function StepFour(props) {
-  const { data } = props;
+  const { summaryData, toggler, changePlan } = props;
+  const [online, setOnline] = useState(false);
+  const [storage, setStorage] = useState(false);
+  const [profile, setProfile] = useState(false);
+
+  useEffect(() => {
+    if (summaryData.online[0]) {
+      setOnline(true);
+    } else {
+      setOnline(false);
+    }
+
+    if (summaryData.storage[0]) {
+      setStorage(true);
+    } else {
+      setStorage(false);
+    }
+
+    if (summaryData.profile[0]) {
+      setProfile(true);
+    } else {
+      setProfile(false);
+    }
+  }, [summaryData.online, summaryData.storage, summaryData.profile]);
 
   return (
     <>
@@ -13,24 +36,50 @@ function StepFour(props) {
         <div className="summary-bg">
           <div>
             <div>
-              <h4 className="summary-option-title">Arcade (Yearly)</h4>
-              <span id="span-underline">Change</span>
+              <h4 className="summary-option-title">
+                {summaryData.plan} ({toggler ? "Yearly" : "Monthly"})
+              </h4>
+              <span
+                onClick={changePlan}
+                id="span-underline">
+                Change
+              </span>
             </div>
-            <span id="blue-span-summary">$90/yr</span>
+            <span id="blue-span-summary">
+              ${summaryData.pricePlan}/{toggler ? "yr" : "mo"}
+            </span>
           </div>
           <hr />
-          <div>
-            <h4>Online service</h4>
-            <span id="blue-span">+$10/yr</span>
-          </div>
-          <div>
-            <h4>Larger storage</h4>
-            <span id="blue-span">+$20/yr</span>
-          </div>
+          {online ? (
+            <div>
+              <h4>{summaryData.online[0]}</h4>
+              <span id="blue-span">
+                +${summaryData.online[1]}/{toggler ? "yr" : "mo"}
+              </span>
+            </div>
+          ) : null}
+          {storage ? (
+            <div>
+              <h4>{summaryData.storage[0]}</h4>
+              <span id="blue-span">
+                +${summaryData.storage[1]}/{toggler ? "yr" : "mo"}
+              </span>
+            </div>
+          ) : null}
+          {profile ? (
+            <div>
+              <h4>{summaryData.profile[0]}</h4>
+              <span id="blue-span">
+                +${summaryData.profile[1]}/{toggler ? "yr" : "mo"}
+              </span>
+            </div>
+          ) : null}
         </div>
         <div className="summary-total">
-          <h4>Total (per year)</h4>
-          <span id="purple-span-total">$120/yr</span>
+          <h4>Total {toggler ? "(per year)" : "(per month)"}</h4>
+          <span id="purple-span-total">
+            ${summaryData.pricePlan + summaryData.online[1] + summaryData.storage[1] + summaryData.profile[1]}/{toggler ? "yr" : "mo"}
+          </span>
         </div>
       </div>
     </>

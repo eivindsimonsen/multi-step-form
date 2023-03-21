@@ -22,6 +22,13 @@ export function useMultistepForm(steps) {
     });
   }
 
+  function backToPlan() {
+    setCurrentStepIndex((i) => {
+      if (i <= 0) return i;
+      return i - 2;
+    });
+  }
+
   // Define a function called 'goTo', which sets the 'currentStepIndex' state variable to a given index.
   function goTo(index) {
     setCurrentStepIndex(index);
@@ -37,5 +44,6 @@ export function useMultistepForm(steps) {
     goTo,
     next,
     back,
+    backToPlan,
   };
 }

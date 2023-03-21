@@ -13,12 +13,10 @@ const INITIAL_DATA = {
   email: "",
   phone: "",
   plan: "",
-  pricePlan: "",
-  addOns: {
-    online: "",
-    storage: "",
-    profile: "",
-  },
+  pricePlan: 0,
+  online: ["", 0],
+  storage: ["", 0],
+  profile: ["", 0],
 };
 
 function FormContainer() {
@@ -27,33 +25,62 @@ function FormContainer() {
   const [showCompleted, setShowCompleted] = useState(false);
   const [data, setData] = useState(INITIAL_DATA);
 
+  // Saves picked plan to state in step two component
+  const [option, setOption] = useState([false, false, false]);
+  const toggleOption = (index) => {
+    const newOptions = option.map((value, i) => i === index);
+    setOption(newOptions);
+  };
+
+  // Saves picked add-ons to state in step three component
+  const [checked, setChecked] = useState({});
+  const toggleChecked = (id) => {
+    setChecked((prevChecked) => {
+      const updatedChecked = { ...prevChecked };
+      updatedChecked[id] = !updatedChecked[id];
+      return updatedChecked;
+    });
+  };
+
+  // Sends values from components to data state in parent, which is passed down to each comp so values are stored
   function updateFields(fields) {
     setData((prev) => {
       return { ...prev, ...fields };
     });
   }
-  console.log(data.plan);
 
-  const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } = useMultistepForm([
+  const changePlan = () => {
+    backToPlan();
+  };
+
+  const { backToPlan, currentStepIndex, step, isFirstStep, isLastStep, back, next } = useMultistepForm([
     <StepOne
       {...data}
       updateFields={updateFields}
     />,
     <StepTwo
+      {...data}
       toggler={toggler}
       setToggler={setToggler}
       onTogglerChange={handleTogglerChange}
-      {...data}
       updateFields={updateFields}
+      toggleOption={toggleOption}
+      option={option}
+      setOption={setOption}
     />,
     <StepThree
       toggler={toggler}
       {...data}
       updateFields={updateFields}
+      checked={checked}
+      toggleChecked={toggleChecked}
     />,
     <StepFour
       {...data}
       updateFields={updateFields}
+      summaryData={data}
+      toggler={toggler}
+      changePlan={changePlan}
     />,
   ]);
 

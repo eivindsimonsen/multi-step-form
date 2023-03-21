@@ -1,21 +1,11 @@
-import { useState } from "react";
-
 function StepTwo(props) {
-  const [option, setOption] = useState([false, false, false]);
   // const [toggler, setToggler] = useState(false);
-  const { onTogglerChange, toggler, setToggler, updateFields, plan, pricePlan } = props;
-
-  const toggleOption = (index) => {
-    const newOptions = option.map((value, i) => i === index);
-    setOption(newOptions);
-    // updateFields({ plan: option[index] });
-  };
-
-  // console.log(option);
+  const { onTogglerChange, toggler, setToggler, updateFields, toggleOption, option, setOption } = props;
 
   const togglePayment = () => {
     setToggler(!toggler);
     onTogglerChange(!toggler);
+    setOption([false, false, false]);
   };
 
   return (
@@ -26,7 +16,10 @@ function StepTwo(props) {
       </div>
       <div className="option">
         <div
-          onClick={() => toggleOption(0)}
+          onClick={() => {
+            toggleOption(0);
+            updateFields({ plan: "Arcade", pricePlan: toggler ? 90 : 9 });
+          }}
           className={option[0] ? "option-active" : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +47,10 @@ function StepTwo(props) {
           </div>
         </div>
         <div
-          onClick={() => toggleOption(1)}
+          onClick={() => {
+            toggleOption(1);
+            updateFields({ plan: "Advanced", pricePlan: toggler ? 120 : 12 });
+          }}
           className={option[1] ? "option-active" : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +78,10 @@ function StepTwo(props) {
           </div>
         </div>
         <div
-          onClick={() => toggleOption(2)}
+          onClick={() => {
+            toggleOption(2);
+            updateFields({ plan: "Pro", pricePlan: toggler ? 150 : 15 });
+          }}
           className={option[2] ? "option-active" : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
