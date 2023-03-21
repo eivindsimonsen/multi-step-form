@@ -9,6 +9,7 @@ function StepOne({ name, email, phone, updateFields }) {
         <label htmlFor="name">Name</label>
         <input
           type="text"
+          autoFocus
           id="name"
           placeholder="e.g. Stephen King"
           value={name}
