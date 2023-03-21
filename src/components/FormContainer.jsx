@@ -122,6 +122,7 @@ function FormContainer() {
       }
     }
 
+    // Step two validation
     if (currentStepIndex === 1) {
       if (option[0] === false && option[1] === false && option[2] === false) {
         setPlanError(true);
@@ -135,7 +136,7 @@ function FormContainer() {
       }
     }
 
-    // If validation is OK, go to next step
+    // If validation above is OK, go to next step
     if (!isLastStep) return next();
 
     // Show completed screen on form submission at last step
